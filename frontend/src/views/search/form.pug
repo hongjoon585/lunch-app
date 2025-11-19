@@ -1,0 +1,52 @@
+extends ../layout.pug
+block content
+  .card
+    h2 점심 추천 검색
+    if error
+      p.error= error
+    form(method="post", action="/search")
+      label 현재 위치
+      input(type="text", name="location", placeholder="예: 서울 강남구 테헤란로", required)
+      
+      label 지금 기분
+      select(name="mood", required)
+        option(value="차분함") 차분함
+        option(value="활기참") 활기참
+        option(value="스트레스 받음") 스트레스 받음
+        option(value="로맨틱함") 로맨틱함
+        option(value="그저 그럼") 그저 그럼
+      
+      label 음식 카테고리
+      select(name="category", required)
+        option(value="양식") 양식
+        option(value="한식") 한식
+        option(value="일식") 일식
+        option(value="중식") 중식
+        option(value="아시안") 아시안
+      
+      label 목적
+      select(name="companions", required)
+        option(value="데이트") 데이트
+        option(value="직장동료") 직장동료
+        option(value="친구") 친구
+        option(value="가족") 가족
+        option(value="혼밥") 혼밥
+      
+      label 예산
+      select(name="budget", required)
+        option(value="10000") 만원 이하
+        option(value="15000") 만원 ~ 만 오천원
+        option(value="20000") 만 오천원 ~ 이만원
+        option(value="30000") 이만원 이상
+      
+      label 분위기
+      select(name="atmosphere", required)
+        option(value="조용한") 조용한
+        option(value="활기찬") 활기찬
+        option(value="고급스러운") 고급스러운
+        option(value="편안한") 편안한
+        option(value="트렌디한") 트렌디한
+      
+      br
+      button.btn(type="submit") 추천 받기
+

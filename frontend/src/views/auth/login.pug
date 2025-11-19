@@ -1,0 +1,17 @@
+extends ../layout.pug
+block content
+  .card
+    h2 로그인
+    if error
+      p.error= error
+    form(method="post", action="/auth/login")
+      input(type="hidden", name="next", value=next)
+      label(for="email") 이메일
+      input(type="email", name="email", required)
+      label(for="password") 비밀번호
+      input(type="password", name="password", required)
+      button.btn(type="submit") 로그인
+    p 아직 회원이 아니신가요?
+      | 
+      a(href="/auth/register") 회원가입
+

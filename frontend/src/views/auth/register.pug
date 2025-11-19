@@ -1,0 +1,13 @@
+extends ../layout.pug
+block content
+  .card
+    h2 회원가입
+    if error
+      p.error= error
+    form(method="post", action="/auth/register")
+      label(for="email") 이메일
+      input(type="email", name="email", required)
+      label(for="password") 비밀번호
+      input(type="password", name="password", required)
+      button.btn(type="submit") 가입하기
+

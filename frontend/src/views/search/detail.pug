@@ -1,0 +1,47 @@
+extends ../layout.pug
+block content
+  .card
+    h2 추천 결과
+    p 날씨: #{result.summary.weather}
+    p 선택 요약: #{result.summary.pick_reason}
+  
+  .price-legend
+    p
+      strong 가격대 표시: 
+      | ₩ = 1만원 이하 | ₩₩ = 1만원~1.5만원 | ₩₩₩ = 1.5만원~2만원 | ₩₩₩₩ = 2만원 이상
+  
+  if result.restaurant
+    .card
+      h3 식당 정보
+      .restaurant-info
+        h4= result.restaurant.name
+        p.ai-summary= result.restaurant.aiSummary
+        p
+          span 평점: ⭐ #{result.restaurant.rating} 
+          span (#{result.restaurant.reviewCount}개 리뷰)
+        p 예상 가격: #{result.restaurant.estimatedPrice}
+        p
+          a.btn(href=result.restaurant.mapLink target="_blank") 지도 보기
+  
+  if result.cafe
+    .card
+      h3 카페 정보
+      .cafe-info
+        h4= result.cafe.name
+        p.ai-analysis= result.cafe.aiAnalysis
+        p
+          span 평점: ⭐ #{result.cafe.rating}
+        p 예상 가격: #{result.cafe.estimatedPrice}
+        p 식당에서 거리: #{result.cafe.distanceFromRestaurant}
+        p
+          a.btn(href=result.cafe.mapLink target="_blank") 지도 보기
+  
+  .card
+    h3 검색 조건
+    p 위치: #{search.query.location || '-'}
+    p 기분: #{search.query.mood || '-'}
+    p 카테고리: #{search.query.category || '-'}
+    p 목적: #{search.query.companions || '-'}
+    p 예산: #{search.query.budget ? search.query.budget + '원' : '-'}
+    p 분위기: #{search.query.atmosphere || '-'}
+

@@ -1,0 +1,32 @@
+extends ../layout.pug
+block content
+  .card
+    h2 내 검색 기록
+    if !items.length
+      p 아직 기록이 없습니다.
+    else
+      .grid
+        each s in items
+          .card
+            p= new Date(s.createdAt).toLocaleString('ko-KR')
+            p 
+              strong 위치: 
+              | #{s.query.location || '-'}
+            p 
+              strong 기분: 
+              | #{s.query.mood || '-'} | 
+              strong 카테고리: 
+              | #{s.query.category || '-'}
+            p 
+              strong 목적: 
+              | #{s.query.companions || '-'} | 
+              strong 분위기: 
+              | #{s.query.atmosphere || '-'}
+            p 
+              strong 예산: 
+              | #{s.query.budget ? s.query.budget + '원' : '-'}
+            if s.recId
+              a.btn(href=`/results/${s.recId}`) 결과 보기
+            else
+              span 대기중
+

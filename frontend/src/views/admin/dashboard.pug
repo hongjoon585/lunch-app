@@ -1,0 +1,18 @@
+extends ../layout.pug
+block content
+  .card
+    h2 관리자 대시보드
+    p 최근 검색 100건
+  if !items.length
+    .card 비어있음
+  else
+    .grid
+      each it in items
+        .card
+          p= new Date(it.createdAt).toLocaleString('ko-KR')
+          p 사용자: #{it.userId}
+          p 위치: #{it.query.location} / 기분: #{it.query.mood} / 예산: #{it.query.budget}
+          p 상태: #{it.status}
+          form(method="post", action=`/admin/logs/${it._id}/delete`)
+            button.btn-ghost(type="submit") 삭제
+

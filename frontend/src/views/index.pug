@@ -1,0 +1,12 @@
+extends ./layout.pug
+block content
+  .card
+    if user
+      h2 안녕하세요 #{user.email} 님!
+      p 필요한 페이지로 이동하세요.
+      a.btn(href="/search") 검색으로 가기
+    else
+      h2 점심 추천 사이트
+      p 로그인 후 추천을 받아보세요.
+      a.btn(href="/auth/login") 로그인
+
