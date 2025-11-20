@@ -5,22 +5,98 @@ html(lang="ko")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title 점심 추천 MVP
     style.
-      body { font-family: system-ui, sans-serif; margin:0; background:#f7f7fb; }
+      /* 전체 배경을 기존 연보라 → 진한 다크톤으로 변경 */
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        background: #0f172a;      /* 진한 남색 계열 */
+        color: #e5e7eb;           /* 기본 글자색 밝게 */
+      }
+
       header, main { max-width: 960px; margin: 0 auto; padding: 16px; }
       header { display:flex; justify-content: space-between; align-items:center; }
-      nav a { margin-right:12px; text-decoration:none; color:#333; }
-      .card { background:#fff; border:1px solid #eee; border-radius:12px; padding:16px; box-shadow:0 2px 10px rgba(0,0,0,.04); margin-bottom:16px; }
-      .btn { display:inline-block; background:#fbbf24; color:#fff; padding:8px 14px; border-radius:8px; text-decoration:none; }
-      .btn-ghost { background:transparent; color:#fbbf24; border:1px solid #fbbf24; }
+
+      nav a {
+        margin-right:12px;
+        text-decoration:none;
+        color:#e5e7eb;            /* 네비게이션 글자도 밝게 */
+      }
+
+      /* 메인 카드: 다크 배경 + 살짝 밝은 테두리 */
+      .card {
+        background:#111827;
+        border:1px solid #1f2937;
+        border-radius:12px;
+        padding:16px;
+        box-shadow:0 2px 14px rgba(0,0,0,.6);
+        margin-bottom:16px;
+      }
+
+      /* 메인 버튼은 그대로 강조색 유지 */
+      .btn {
+        display:inline-block;
+        background:#fbbf24;
+        color:#111827;
+        padding:8px 14px;
+        border-radius:8px;
+        text-decoration:none;
+      }
+
+      .btn-ghost {
+        background:transparent;
+        color:#fbbf24;
+        border:1px solid #fbbf24;
+      }
+
       .grid { display:grid; gap:12px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
-      form label { display:block; margin:8px 0 4px; color:#444; font-weight:500; }
-      input, select { width:100%; padding:8px; border:1px solid #ddd; border-radius:8px; box-sizing:border-box; }
-      .error { color:#b91c1c; margin:8px 0; }
+
+      form label {
+        display:block;
+        margin:8px 0 4px;
+        color:#e5e7eb;
+        font-weight:500;
+      }
+
+      input, select {
+        width:100%;
+        padding:8px;
+        border:1px solid #4b5563;
+        border-radius:8px;
+        box-sizing:border-box;
+        background:#020617;
+        color:#e5e7eb;
+      }
+
+      .error { color:#fca5a5; margin:8px 0; }
+
       .restaurant-info, .cafe-info { line-height:1.8; }
-      .ai-summary, .ai-analysis { color:#555; font-style:italic; margin:8px 0; padding:8px; background:#f9fafb; border-radius:4px; }
+
+      .ai-summary, .ai-analysis {
+        color:#e5e7eb;
+        font-style:italic;
+        margin:8px 0;
+        padding:8px;
+        background:#020617;
+        border-radius:4px;
+      }
+
       p { margin:4px 0; }
-      strong { color:#333; font-weight:600; }
-      .price-legend { background:#fff; border:1px solid #eee; border-radius:12px; padding:12px; margin-bottom:16px; text-align:center; font-size:14px; }
+
+      strong {
+        color:#fbbf24;
+        font-weight:600;
+      }
+
+      .price-legend {
+        background:#020617;
+        border:1px solid #1f2937;
+        border-radius:12px;
+        padding:12px;
+        margin-bottom:16px;
+        text-align:center;
+        font-size:14px;
+      }
+
       .price-legend strong { color:#fbbf24; }
   body
     header
