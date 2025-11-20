@@ -12,7 +12,18 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const BACKEND = process.env.BACKEND_BASE_URL || 'http://back:4000';
+
+// ✅ 백엔드 베이스 URL 우선순위:
+// 1) API_BASE_URL (k8s에서 주입)
+// 2) BACKEND_BASE_URL (혹시 나중에 쓸 수 있게 남겨둠)
+// 3) BACKEND_API_HOST (ConfigMap key 이름)
+// 4) 마지막 디폴트: 쿠버네티스 서비스 FQDN
+const BACKEND =
+  process.env.API_BASE_URL ||
+  process.env.BACKEND_BASE_URL ||
+  process.env.BACKEND_API_HOST ||
+  'http://lunch-app-back-service.back-ns:4000';
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
 app.set('view engine', 'pug');
